@@ -32,4 +32,6 @@
                  [org.clojure/tools.logging "0.2.6"]
                  [ch.qos.logback/logback-classic "1.0.1"]
                  ;; template
-                 [me.shenfeng/mustache "1.1"]])
+                 [me.shenfeng/mustache "1.1"]
+                 [clj-serial "2.0.4-SNAPSHOT"]
+                 [manifold "0.1.4"]])

@@ -6,4 +6,4 @@
    :req (merge req {:async-channel nil})})
 
 (defn print-image [req]
-  {})
+  {:req (merge req {:async-channel nil})})

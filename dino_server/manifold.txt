@@ -1,0 +1,10 @@
+dino-server.main=> (defn loop-forever [f] (doall (repeatedly f)))
+#'dino-server.main/loop-forever
+dino-server.main=> (defn consumer [] (loop-forever (fn [] (println @(s/take! s)))))
+#'dino-server.main/consumer
+dino-server.main=> (defn producer [] (loop-forever (fn [] (s/put! s (rand-int 100)) (Thread/sleep 1000))))
+#'dino-server.main/producer
+dino-server.main=> (-> (Thread. consumer) .start)
+nil
+dino-server.main=> (-> (Thread. producer) .start)
+

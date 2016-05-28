@@ -3,15 +3,18 @@
           (ring.middleware [keyword-params :only [wrap-keyword-params]]
                            [params :only [wrap-params]]
                            [session :only [wrap-session]])
-          [dino-server.middleware :only [wrap-failsafe wrap-request-logging-in-dev
-                                              wrap-reload-in-dev JGET JPUT JPOST JDELETE]])
+          [ring.util.response :only [redirect]]
+          [dino-server.middleware :only [wrap-failsafe 
+                                         wrap-request-logging-in-dev
+                                         wrap-reload-in-dev 
+                                         JGET JPUT JPOST JDELETE]])
     (:require [dino-server.handlers.app :as app]
               [dino-server.handlers.api :as api]
               [compojure.route :as route]))
 
 ;; define mapping here
 (defroutes server-routes*
-  (GET "/" [] app/show-landing)
+  (GET "/" [] (redirect "/static/neterror.html"));app/show-landing)
   (context "/api" []
            ;; JGET returns json encoding of the response
            (JGET "/time" [] api/get-time)
